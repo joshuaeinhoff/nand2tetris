@@ -1,0 +1,25 @@
+/**
+* Author: Joshua Einhoff
+* Date: 11-07-2024 (dd-mm-yyy
+* Exclusive-or gate:
+* if ((a and Not(b)) or (Not(a) and b)) out = 1, else out = 0
+* There is another way to implement this gate but I am not sure yet
+* which one is better.
+* PARTS:
+* Not(in=a, out=notA);
+* Not(in=b, out=notB);
+* And(a=a, b=notB, out=aAndNotB);
+* And(a=notA, b=b, out=notaAndB);
+* Or(a=aAndNotB, b=notaAndB, out=out);
+* If the number of gates plays a role the non-comment one might be better.
+*/
+CHIP Xor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Or(a=a, b=b, out=aOrB);
+    And(a=a,b=b, out=aAndB);
+    Not(in=aAndB, out=notaAndB);
+    And(a=aOrB, b=notaAndB, out=out);
+}
