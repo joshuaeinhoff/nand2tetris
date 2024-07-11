@@ -1,0 +1,12 @@
+/** 
+* Author: Joshua Einhoff
+* Date: 11-07-2024 (dd-mm-yyyy)
+* Only using given nand()
+* Not-Gate: in = 1 -> 0 | in = 0 -> 1
+*/
+CHIP Not {
+  IN in;
+  OUT out;
+  PARTS:
+  Nand(a=in, b=in, out=out);
+}
